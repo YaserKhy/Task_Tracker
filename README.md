@@ -16,7 +16,7 @@
 <img src='./readme_media/home.png' alt='home' style='border:5px solid #1c1561'>
 
 ### 3.2 Add task page ✍️
-<img src='./readme_media/home.png' alt='home' style='border:5px solid #1c1561'>
+<img src='./readme_media/add.png' alt='home' style='border:5px solid #1c1561'>
 
 ### Video Result 🎥
 [Click to display video results](https://drive.google.com/file/d/1lqfnG1hygPNnk3fd3rXzI-oAGP9j5xeS/view?usp=sharing)
