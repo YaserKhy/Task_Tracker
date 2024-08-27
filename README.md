@@ -20,6 +20,7 @@
 
 ### Video Result 🎥
 [Click to display video results](https://drive.google.com/file/d/1lqfnG1hygPNnk3fd3rXzI-oAGP9j5xeS/view?usp=sharing)
+**Note** : Video might display different colors than screenshots, colors in screenshots are the original colors.
 
 ## 4. Conclusion 🏁
 `Task Tracker` is the best solution for confused busy people, as it is providing the ability to add tasks and track them easily.
