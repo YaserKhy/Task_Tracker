@@ -5,7 +5,7 @@ import 'package:todo_ex/models/task.dart';
 class AllTasks {
   // constructor to load saved categories and tasks
   // this won't get executed in the first time launch since there are no saved tasks and categories
-  AllTasks() {loadCategories(); loadTasks();}
+  // AllTasks() {loadCategories(); loadTasks();}
   
   // lists to store tasks and categories "acts like a bridge between app and storage"
   List<Task> tasks = [];
