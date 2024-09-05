@@ -1,7 +1,7 @@
 # Task Tracker : To-do app 📓
 
 ## 1. Overview 📖
-`Task Tracker` is a flutter application that helps users organize their daily tasks and track them through a simple and user-friendly interface.
+`Task Tracker` is a **responsive** flutter application that helps users organize their daily tasks and track them through a simple and user-friendly interface.
 
 ## 2. Main Features 📱
 - **Add Tasks** Users can `Add Tasks` to their list.
@@ -16,10 +16,12 @@
 <img src='./readme_media/home.png' alt='home' style='border:5px solid #1c1561'>
 
 ### 3.2 Add task page ✍️
-<img src='./readme_media/home.png' alt='home' style='border:5px solid #1c1561'>
+<img src='./readme_media/add.png' alt='home' style='border:5px solid #1c1561'>
 
 ### Video Result 🎥
 [Click to display video results](https://drive.google.com/file/d/1lqfnG1hygPNnk3fd3rXzI-oAGP9j5xeS/view?usp=sharing)
+
+**Note** : Video might display different colors than screenshots, colors in screenshots are the original colors.
 
 ## 4. Conclusion 🏁
 `Task Tracker` is the best solution for confused busy people, as it is providing the ability to add tasks and track them easily.
