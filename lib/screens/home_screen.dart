@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeBloc(),
       child: Builder(builder: (context) {
+        final bloc = context.read<HomeBloc>();
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size(context.getWidth(), context.getHeight(divideBy: 15)),
@@ -24,7 +25,6 @@ class HomeScreen extends StatelessWidget {
           body: SafeArea(
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
-                final bloc = context.read<HomeBloc>();
                 bloc.add(ShowTasksEvent());
                 if (state is ShowTasksState) {
                   if(state.tasks.isNotEmpty) {
@@ -41,15 +41,11 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-              backgroundColor: mainColor,
-              shape: const OvalBorder(),
-              child: const Icon(Icons.add, size: 30, color: Colors.white),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const AddScreen()),
-                ).then((v) => context.read<HomeBloc>().add(ShowTasksEvent()));
-              }),
+            backgroundColor: mainColor,
+            shape: const OvalBorder(),
+            child: const Icon(Icons.add, size: 30, color: Colors.white),
+            onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context) => const AddScreen())).then((v) => bloc.add(ShowTasksEvent()))
+          ),
         );
       }),
     );

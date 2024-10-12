@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:todo_ex/data/all_tasks.dart';
@@ -28,7 +27,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     on<EditTaskEvent>((event, emit) {
-      String oldtitle = event.task.title;
       data.editTask(task: event.task, newTitle: event.newTitle);
       emit(ShowTasksState(tasks: data.tasks));
     });
