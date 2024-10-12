@@ -8,6 +8,9 @@ part 'add_task_state.dart';
 
 class AddTaskBloc extends Bloc<AddTaskEvent, AddTaskState> {
   final data = GetIt.I.get<AllTasks>();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  
   AddTaskBloc() : super(AddTaskInitial()) {
     on<AddNewTaskEvent>((event, emit) {
       data.addTask(title: event.title, category: event.catgeory);

@@ -15,8 +15,6 @@ class AddScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> categories = GetIt.I.get<AllTasks>().categories;
     String selectedCategory = GetIt.I.get<AllTasks>().categories.first;
-    TextEditingController titleController = TextEditingController();
-    TextEditingController categoryController = TextEditingController();
     return BlocProvider(
       create: (context) => AddTaskBloc(),
       child: Builder(builder: (context) {
@@ -24,7 +22,7 @@ class AddScreen extends StatelessWidget {
         bloc.add(LoadCategoriesEvent());
         return Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size(context.getWidth(), context.getHeight(divideBy: 15)),
+            preferredSize: Size(context.getWidth(), context.getHeight(divideBy: MediaQuery.orientationOf(context) == Orientation.landscape ? 10 : 15)),
             child: const TaskTrackerAppBar(back: true)
           ),
           body: Padding(
@@ -40,7 +38,7 @@ class AddScreen extends StatelessWidget {
                       const SizedBox(height: 10,),
                       SizedBox(
                         height: context.getHeight() > 1000 ? null : 60,
-                        child: UserInput(titleController: titleController, mode: 'new'),
+                        child: UserInput(titleController: bloc.titleController, mode: 'new'),
                       ),
                       const SizedBox(height: 10,),
                       const Text("Choose Category",style: TextStyle(fontSize: 23,color: Colors.black,fontWeight: FontWeight.w500),),
@@ -66,7 +64,10 @@ class AddScreen extends StatelessWidget {
                                   child: Text(categories[index],style: const TextStyle(color: Colors.black))
                                 );
                               }),
-                              onChanged: (v)=> selectedCategory = v!
+                              onChanged: (v) {
+                                selectedCategory = v!;
+                                bloc.add(LoadCategoriesEvent());
+                              }
                             ),
                           ),
                           const SizedBox(width: 20,),
@@ -80,7 +81,7 @@ class AddScreen extends StatelessWidget {
                               return AlertDialog(
                                 title: const Text("Add category"),
                                 content: TextField(
-                                  controller: categoryController,
+                                  controller: bloc.categoryController,
                                   decoration: const InputDecoration(filled: true,fillColor: textFieldColor)
                                 ),
                                 actionsAlignment: MainAxisAlignment.center,
@@ -88,7 +89,7 @@ class AddScreen extends StatelessWidget {
                                   ElevatedButton(
                                     style: const ButtonStyle(backgroundColor:WidgetStatePropertyAll(mainColor)),
                                     onPressed: () {
-                                      GetIt.I.get<AllTasks>().addCategory(category:categoryController.text);
+                                      GetIt.I.get<AllTasks>().addCategory(category:bloc.categoryController.text);
                                       Navigator.pop(context);
                                     },
                                     child: const Text("Add category",style: TextStyle(color: Colors.white))
@@ -104,7 +105,7 @@ class AddScreen extends StatelessWidget {
                         child: ElevatedButton(
                           style: const ButtonStyle(backgroundColor:WidgetStatePropertyAll(mainColor)),
                           onPressed: () {
-                            bloc.add(AddNewTaskEvent(catgeory: selectedCategory,title: titleController.text));
+                            bloc.add(AddNewTaskEvent(catgeory: selectedCategory,title: bloc.titleController.text));
                             Navigator.pop(context);
                           },
                           child: const Text("Add Task",style: TextStyle(color: Colors.white))

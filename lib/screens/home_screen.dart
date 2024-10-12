@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         final bloc = context.read<HomeBloc>();
         return Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size(context.getWidth(), context.getHeight(divideBy: 15)),
+            preferredSize: Size(context.getWidth(), context.getHeight(divideBy: MediaQuery.orientationOf(context) == Orientation.landscape ? 10 : 15)),
             child: const TaskTrackerAppBar(back: false)
           ),
           body: SafeArea(
